@@ -11,18 +11,34 @@
     }
 
     header > h1{
+      color: white;
       display: flex;
       justify-content: flex-start;
     }
 
     header > a{
       display: flex;
-      justify-content: flex-end;
-      background-color: black;
+      justify-content: right;
+      height: 100%;
+      background-color: grey;
       color: white;
       border-radius: 5px;
       padding: 5px;
     }
+
+    body {
+      
+      margin: 0 auto;
+      width: 60%;
+      color: white;
+      background-image: url('https://steamuserimages-a.akamaihd.net/ugc/952958387206892057/50677EFA11070FB2DBAA9B813038900EFC24819C/');
+      background-size: cover;
+    }
+
+    .main {
+      background-color: rgba(250, 235, 215, 0.411);
+    }
+
   </style>
 
 
@@ -40,8 +56,9 @@
     <header>
       <h1>Music App</h1>
       <% if logged_in? %>
-        <h2>Welcome back!</h2>
         <form action="<%= session_url %>" method="post">
+          <%= auth_token_input %>
+          
           <%= auth_token_input %>
           <input type="hidden" name="_method" value="delete">
           <input type="submit" value="Logout">
@@ -51,6 +68,9 @@
           <a href=" <%= new_session_url %> ">Sign In</a>
       <% end %>
     </header>
-    <%= yield %>
+    <div class="main">
+      <%= yield %>
+    </div>
+    
   </body>
 </html>
